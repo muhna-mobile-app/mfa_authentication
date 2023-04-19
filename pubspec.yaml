@@ -1,7 +1,7 @@
-name: mfa_template
+name: mfa_authentication
 description: A new Flutter package project.
 version: 0.0.1
-homepage: mfa_template
+homepage: mfa_authentication
 
 environment:
   sdk: ">=2.19.6 <3.0.0"
