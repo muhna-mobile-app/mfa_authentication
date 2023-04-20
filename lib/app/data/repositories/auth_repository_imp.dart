@@ -15,10 +15,10 @@ class AuthRepositoryImp implements AuthRepository {
         email: loginEntity.email,
         password: loginEntity.password,
       ).toJson();
-      final result = await _authLocalDataSource.loginUser(loginData);
+      final result = await _authLocalDataSource.postLogin(loginData);
       return result.tokenEntity();
     } catch (e) {
-      throw Exception();
+      throw Exception(e);
     }
   }
 
