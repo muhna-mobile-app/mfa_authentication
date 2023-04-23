@@ -2,12 +2,12 @@ import 'package:mfa_authentication/app/data/models/login_model.dart';
 import 'package:mfa_authentication/app/domain/entities/auth_token_entity.dart';
 import 'package:mfa_authentication/app/domain/entities/login_repository.dart';
 import 'package:mfa_authentication/app/domain/repositories/auth_remote_repository.dart';
-import 'package:mfa_authentication/app/data/datasources/auth_datasource.dart';
+import 'package:mfa_authentication/app/data/datasources/remote/auth_remote_datasource.dart';
 
-class AuthRepositoryImp implements AuthRepository {
-  final AuthDataSource _authLocalDataSource;
+class AuthRemoteRepositoryImp implements AuthRemoteRepository {
+  final AuthRemoteDataSource _authRemoteDataSource;
 
-  AuthRepositoryImp(this._authLocalDataSource);
+  AuthRemoteRepositoryImp(this._authRemoteDataSource);
   @override
   Future<AuthTokenEntity> login(LoginEntity loginEntity) async {
     try {
@@ -15,7 +15,7 @@ class AuthRepositoryImp implements AuthRepository {
         email: loginEntity.email,
         password: loginEntity.password,
       ).toJson();
-      final result = await _authLocalDataSource.postLogin(loginData);
+      final result = await _authRemoteDataSource.postLogin(loginData);
       return result.tokenEntity();
     } catch (e) {
       throw Exception(e);
