@@ -1,3 +1,4 @@
-library mfa_template;
+library mfa_authentication;
 
-export 'app/presentation/pages/authentication_page.dart';
+export 'app/authentication_app.dart';
+export 'app/injection.dart';

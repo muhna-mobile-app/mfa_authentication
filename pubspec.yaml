@@ -2,6 +2,7 @@ name: mfa_authentication
 description: A new Flutter package project.
 version: 0.0.1
 homepage: mfa_authentication
+publish_to: none
 
 environment:
   sdk: ">=2.19.6 <3.0.0"
@@ -10,7 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  common_dependencies:
+    path: "../common_dependencies"
+  core_app:
+    path: "../core_app"
 dev_dependencies:
   flutter_test:
     sdk: flutter
