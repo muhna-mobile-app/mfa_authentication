@@ -1,5 +1,6 @@
 import 'package:core_app/core_app.dart';
 import 'package:flutter/material.dart';
+import 'presentation/pages/register_page.dart';
 import 'presentation/pages/login_page.dart';
 
 class AuthenticationApp implements MicroApp {
@@ -17,6 +18,7 @@ class AuthenticationApp implements MicroApp {
   Map<String, WidgetBuilderArgs> get routes {
     return {
       '/login': (context, args) => const LoginPage(),
+      '/register': (context, args) => const RegisterPage(),
     };
   }
 }
