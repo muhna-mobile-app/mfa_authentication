@@ -7,7 +7,6 @@ import 'package:mfa_authentication/app/domain/repositories/auth_local_repository
 import 'package:mfa_authentication/app/domain/repositories/auth_remote_repository.dart';
 import 'package:mfa_authentication/app/domain/usecases/login_user/login_user_usecase.dart';
 import 'package:mfa_authentication/app/domain/usecases/register_user/register_user_usecase.dart';
-import 'package:mfa_authentication/app/presentation/controllers/login_controller.dart';
 
 import 'data/datasources/local/auth_local_datasource.dart';
 import 'data/datasources/local/auth_local_datasource_imp.dart';
@@ -37,9 +36,6 @@ class Inject {
     getIt.registerSingleton<LogInUserUseCase>(LogInUserUseCase(getIt()));
     getIt.registerSingleton<AuthTokenUseCase>(AuthTokenUseCase(getIt()));
     getIt.registerSingleton<RegisterUserUseCase>(RegisterUserUseCase(getIt()));
-
-    //controllers
-    getIt.registerLazySingleton(() => LoginController());
 
     //Stores
     getIt.registerSingleton<RegisterFormStore>(RegisterFormStore());
