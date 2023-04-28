@@ -1,6 +1,10 @@
 import 'package:common_dependencies/common_dependencies.dart';
 import 'package:mfa_authentication/app/domain/entities/register_entity.dart';
+import 'package:mfa_authentication/app/domain/usecases/auth_token/auth_token_usecase.dart';
+import 'package:mfa_authentication/app/domain/usecases/login_user/login_user_usecase.dart';
 import 'package:mfa_authentication/app/domain/usecases/register_user/register_user_usecase.dart';
+
+import '../../domain/entities/login_repository.dart';
 part 'auth_store.g.dart';
 
 // ignore: library_private_types_in_public_api
@@ -22,8 +26,16 @@ abstract class _AuthStoreBase with Store {
   Future<void> login(String email, String password) async {
     try {
       status = AuthStatus.loading;
-      // perform login operation here
-      // if login is successful, set status to AuthStatus.authenticated
+      final loginEntity = LoginEntity(
+        email: email,
+        password: password,
+      );
+      final logInUserUseCase = GetIt.I.get<LogInUserUseCase>();
+      final authTokenUseCase = GetIt.I.get<AuthTokenUseCase>();
+
+      final authTokenEntity = await logInUserUseCase.logIn(loginEntity);
+      await authTokenUseCase.saveToken(authTokenEntity);
+
       status = AuthStatus.authenticated;
     } catch (error) {
       errorMessage = error.toString();
