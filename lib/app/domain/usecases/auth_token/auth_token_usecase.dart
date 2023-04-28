@@ -10,7 +10,7 @@ class AuthTokenUseCase {
     try {
       return await _authLocalRepository.getAuthToken();
     } catch (e) {
-      throw Exception(e);
+      rethrow;
     }
   }
 
@@ -18,7 +18,7 @@ class AuthTokenUseCase {
     try {
       await _authLocalRepository.saveAuthToken(authTokenEntity);
     } catch (e) {
-      throw Exception(e);
+      rethrow;
     }
   }
 }

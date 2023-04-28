@@ -10,7 +10,7 @@ class RegisterUserUseCase {
     try {
       return await _authRemoteRepository.register(registerEntity);
     } catch (e) {
-      throw Exception(e);
+      rethrow;
     }
   }
 }
