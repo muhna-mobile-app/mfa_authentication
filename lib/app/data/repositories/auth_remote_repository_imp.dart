@@ -25,12 +25,6 @@ class AuthRemoteRepositoryImp implements AuthRemoteRepository {
   }
 
   @override
-  Future<bool> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
-  }
-
-  @override
   Future<bool> register(RegisterEntity registerEntity) async {
     try {
       final registerData = RegisterModel(
