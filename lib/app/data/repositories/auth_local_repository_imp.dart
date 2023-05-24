@@ -26,4 +26,13 @@ class AuthLocalRepositoryImp implements AuthLocalRepository {
       rethrow;
     }
   }
+
+  @override
+  Future<void> removeAuthToken() async {
+    try {
+      return await _authLocalDataSource.remove();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

@@ -21,4 +21,12 @@ class AuthTokenUseCase {
       rethrow;
     }
   }
+
+  Future<void> removeToken() async {
+    try {
+      return await _authLocalRepository.removeAuthToken();
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

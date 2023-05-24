@@ -23,4 +23,14 @@ class AuthLocalDataSourceImp implements AuthLocalDataSource {
       throw Exception('Não foi possível salvar o token');
     }
   }
+
+  @override
+  Future<void> remove() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final removedResult = await prefs.remove('token');
+
+    if (!removedResult) {
+      throw Exception('Não foi possível realizar a operação. Tente novamente.');
+    }
+  }
 }
