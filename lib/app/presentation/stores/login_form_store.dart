@@ -47,4 +47,9 @@ abstract class _LoginFormStoreBase with Store {
   bool get isFormValid {
     return isEmailValid && !isFormEmpty;
   }
+
+  void clearLoginForm() {
+    setEmail('');
+    setPassword('');
+  }
 }
