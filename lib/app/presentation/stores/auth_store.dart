@@ -64,7 +64,7 @@ abstract class _AuthStoreBase with Store {
         return;
       }
       Future.delayed(const Duration(seconds: 3));
-      status = AuthStatus.authenticated;
+      status = AuthStatus.unauthenticated;
     } catch (error) {
       errorMessage = error.toString();
       status = AuthStatus.unauthenticated;
@@ -73,8 +73,15 @@ abstract class _AuthStoreBase with Store {
 
   @action
   Future<void> logout() async {
-    // perform logout operation here
-    // set status to AuthStatus.unauthenticated
-    status = AuthStatus.unauthenticated;
+    try {
+      status = AuthStatus.loading;
+      final authTokenUseCase = GetIt.I.get<AuthTokenUseCase>();
+      await authTokenUseCase.removeToken();
+
+      status = AuthStatus.unauthenticated;
+    } catch (error) {
+      errorMessage = error.toString();
+      status = AuthStatus.authenticated;
+    }
   }
 }
