@@ -12,6 +12,7 @@ import 'data/datasources/local/auth_local_datasource.dart';
 import 'data/datasources/local/auth_local_datasource_imp.dart';
 import 'domain/usecases/auth_token/auth_token_usecase.dart';
 import 'presentation/stores/auth_store.dart';
+import 'presentation/stores/login_form_store.dart';
 import 'presentation/stores/register_form_store.dart';
 
 class Inject {
@@ -39,6 +40,7 @@ class Inject {
 
     //Stores
     getIt.registerSingleton<RegisterFormStore>(RegisterFormStore());
+    getIt.registerSingleton<LoginFormStore>(LoginFormStore());
     getIt.registerSingleton<AuthStore>(AuthStore());
   }
 }

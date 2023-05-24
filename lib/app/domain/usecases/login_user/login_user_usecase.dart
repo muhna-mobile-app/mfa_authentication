@@ -10,7 +10,7 @@ class LogInUserUseCase {
     try {
       return await _repository.login(loginEntity);
     } catch (e) {
-      throw Exception(e);
+      rethrow;
     }
   }
 }

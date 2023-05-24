@@ -93,6 +93,13 @@ abstract class _RegisterFormStoreBase with Store {
         : 'Senhas não coincidem';
   }
 
+  void clearRegisterForm() {
+    setName('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+  }
+
   @computed
   bool get isFormEmpty {
     return name.isEmpty ||

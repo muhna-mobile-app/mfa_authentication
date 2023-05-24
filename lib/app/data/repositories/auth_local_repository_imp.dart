@@ -13,7 +13,7 @@ class AuthLocalRepositoryImp implements AuthLocalRepository {
     try {
       return await _authLocalDataSource.get();
     } catch (e) {
-      throw Exception(e);
+      rethrow;
     }
   }
 
@@ -23,7 +23,16 @@ class AuthLocalRepositoryImp implements AuthLocalRepository {
     try {
       await _authLocalDataSource.save(token!);
     } catch (e) {
-      throw Exception(e);
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> removeAuthToken() async {
+    try {
+      return await _authLocalDataSource.remove();
+    } catch (e) {
+      rethrow;
     }
   }
 }
