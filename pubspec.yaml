@@ -12,9 +12,12 @@ dependencies:
   flutter:
     sdk: flutter
   common_dependencies:
-    path: "../common_dependencies"
+    git:
+      url: "https://github.com/muhna-mobile-app/common_dependencies"
   core_app:
-    path: "../core_app"
+    git:
+      url: "https://github.com/muhna-mobile-app/core_app"
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
