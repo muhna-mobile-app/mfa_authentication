@@ -10,7 +10,7 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
   @override
   Future<AuthTokenModel> postLogin(Map<String, dynamic> loginData) async {
     try {
-      var response = await dio.post('http://192.168.1.20:3001/api/user/auth',
+      var response = await dio.post('http://localhost:3001/api/user/auth',
           data: loginData);
       if (response.statusMessage == '500') {
         throw Exception(response.data);
@@ -26,7 +26,7 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
   @override
   Future<bool> postRegister(Map<String, dynamic> registerData) async {
     try {
-      var response = await dio.post('http://192.168.1.20:3001/api/user/create',
+      var response = await dio.post('http://localhost:3001/api/user/create',
           data: registerData);
 
       if (response.statusCode != 201) {
